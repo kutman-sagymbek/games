@@ -5,7 +5,7 @@ let filterInput = document.getElementById("filterInput");
 let filterByAlphabet = document.querySelector(".alphabet");
 let filterByRating = document.querySelector(".rating");
 let loadMoreBtn = document.querySelector(".load-moreBtn");
-let currentSortingCriteria = 'alphabet';
+let currentSortingCriteria = '';
 let currentPage = 1;
 let itemsPerPage = 3;
 let gamesData = [];
@@ -61,18 +61,19 @@ function debounce(func, delay) {
     };
 }
 
-function filterGames(){
-    let filterValue = filterInput.value.toUpperCase();
-    let game = gamesEl.querySelectorAll(".game");
-    for(i =0; i < game.length; i++ ){
-        let span = game[i].querySelector(".game__name");
-        if(span.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-            game[i].style.display = "initial";
-        } else {
-            game[i].style.display = "none";
-        }
-    }
+async function filterGames() {
+    let filterValue = filterInput.value;
+    const API_URL_SEARCH = `${API_URL}&search=${filterValue}`;
+    const response = await fetch(API_URL_SEARCH);
+    const responseData = await response.json();
+    currentPage = 1;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const gamesData = responseData.results.slice(startIndex, endIndex);
+    gamesEl.innerHTML = "";
+    showGames(gamesData);
 }
+
 
 function showGames(data) {
     console.log(data);
@@ -96,8 +97,8 @@ function showGames(data) {
         const gameNameLink = gameEl.querySelector(".game__name");
         gameNameLink.addEventListener("click", () => {
             const gameData = { name: game.name, id: game.id };
-            const gameDataString = JSON.stringify(gameData);
-            const newURL = `gameInfo.html?id=${game.id}`;
+            // const gameDataString = JSON.stringify(gameData);
+            const newURL = `gameInfo/gameInfo.html?id=${game.id}`;
             window.location.href = newURL;
         });
         gamesEl.appendChild(gameEl);
