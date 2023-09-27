@@ -41,32 +41,37 @@ body {
 
 .game-info {
     display: flex;
-    margin: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
-.game-info__cover {
-    width: 400px;
-    height: 600px;
+#game-info__cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#game__cover {
+img {
+    padding: 30px;
     width: 400px;
     height: 600px;
     object-fit: cover;
 }
 
 .game-info__details {
+    width: 80%;
     padding: 30px;
 }
 
-#game__title {
+#gameTitle {
+    text-align: center;
     color: white;
     font-size: 25px;
 }
 
-#game__description {
+#gameDescription {
     color: #7c7c7f;
-    font-size: 20px;
+    font-size: 15px;
     padding-top: 30px;
 }
 
@@ -89,6 +94,11 @@ body {
         width: 200px;
     }
 
+    img {
+        width: 300px;
+        height: 500px;
+    }
+
 
 }
 
@@ -103,11 +113,18 @@ body {
     }
 
     .game-info {
-        display: block;
+        flex-direction: column;
     }
 
-    #game__cover {
-        width: 100%;
-        object-fit: cover;
+    img {
+        width: 150px;
+        height: 300px;
+    }
+     #gameTitle {
+         font-size: 15px;
+     }
+
+    #gameDescription {
+        font-size: 10px;
     }
     }

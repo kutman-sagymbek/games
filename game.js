@@ -95,8 +95,10 @@ function showGames(data) {
 
         const gameNameLink = gameEl.querySelector(".game__name");
         gameNameLink.addEventListener("click", () => {
-            localStorage.setItem("selectedGame", JSON.stringify(game));
-            window.location.href = "gameInfo.html";
+            const gameData = { name: game.name, id: game.id };
+            const gameDataString = JSON.stringify(gameData);
+            const newURL = `gameInfo.html?id=${game.id}`;
+            window.location.href = newURL;
         });
         gamesEl.appendChild(gameEl);
     })
