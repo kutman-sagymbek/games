@@ -15,9 +15,7 @@ body {
 }
 
 .header__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    text-align: center;
     padding: 36px;
     height: 60px;
 }
@@ -26,17 +24,6 @@ body {
     font-size: 32px;
     text-decoration: none;
     color: #ffffff;
-}
-
-.header__search {
-    text-align: center;
-    width: 400px;
-    padding: 8px;
-    border: 2px solid #7c7c7f;
-    border-radius: 5px;
-    outline: 0;
-    background-color: transparent;
-    color:#7c7c7f;
 }
 
 .game-info {
@@ -107,10 +94,6 @@ img {
         font-size: 22px;
     }
 
-    .header__search {
-        text-align: center;
-        width: 200px;
-    }
 
     .game-info {
         flex-direction: column;
